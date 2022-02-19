@@ -14,7 +14,7 @@
         <a href="/articles/new" class="btn btn-success">New article</a>
 
         <% articles.forEach(article => { %>
-            <div class="card mt-4">
+            <div class="card mb-5">
                 <div class="card-body">
                     <h4 class="card-title">
                         <%= article.title %>
@@ -34,5 +34,6 @@
             </div>
         <% }) %>
     </div>
+    <%- include('.././partials/footer') %>
 </body>
 </html>
