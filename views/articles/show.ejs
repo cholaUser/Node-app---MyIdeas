@@ -11,15 +11,20 @@
 <body>
 <%- include('.././partials/header') %>
 <div class="container">
-    <h1 class="mb-1"><%= article.title %></h1>
+    <div class="mb-1" style="display: flex; justify-content: center; align-items: center">  <!--OBTOCZYC JAK BUTTON -->
+        <h1 ><%= article.title %></h1>
+        <a href="/articles/edit/<%= article.id %>" class="btn btn-outline-dark" style="margin-left: 40px">
+            <img src="/img/pencil.svg" width="30" height="30" alt="">
+        </a>    <!-- slug???-->
+    </div>
     <div class="text-muted mb-2">
         <%article.createdAt.toLocaleDateString() %>
     </div>
-    <a href="/" class="btn btn-secondary">All Articles</a>
-    <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>    <!-- slug???-->
     <div>
         <%- article.sanitizedHtml %>    <!-- było %= -->
     </div>
+    <a href="/" class="btn btn-secondary">All Articles</a>
+
 </div>
 <%- include('.././partials/footer') %>
 </body>

@@ -11,7 +11,7 @@
 <body>
     <%- include('.././partials/header') %>
     <div class="container">
-        <div class="mb-4" style="display: flex; justify-content: start; align-items: center">
+        <div class="mb-4" style="display: flex; justify-content: center; align-items: center">
             <div style="padding-right: 40px">
                 <h1>Blog Articles</h1>
             </div>
@@ -33,9 +33,11 @@
                     <div class="card-text mb-2">
                         <%= article.description %>
                     </div>
-                    <div style="display: flex; justify-content: end">
-                        <a href="articles/<%= article.slug %>" class="btn btn-outline-success" style="margin: 0 1px"> Read </a> <!-- było id -->
-                        <a href="articles/edit/<%= article.id %>" class="btn btn-outline-success" style="margin: 0 1px"> Edit </a>
+                    <div style="display: flex; justify-content: space-between">
+                        <div>
+                            <a href="articles/<%= article.slug %>" class="btn btn-outline-primary" style="margin: 0 1px"> Read </a> <!-- było id -->
+                            <a href="articles/edit/<%= article.id %>" class="btn btn-outline-primary" style="margin: 0 1px"> Edit </a>
+                        </div>
                         <form action="/articles/<%= article.id %>?_method=DELETE" method="post" class="d-inline" style="margin: 0 1px">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
