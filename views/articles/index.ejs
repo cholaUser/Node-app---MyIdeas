@@ -33,11 +33,13 @@
                     <div class="card-text mb-2">
                         <%= article.description %>
                     </div>
-                    <a href="articles/<%= article.slug %>" class="btn btn-outline-success"> Read More </a> <!-- było id -->
-                    <a href="articles/edit/<%= article.id %>" class="btn btn-outline-success"> Edit </a>
-                    <form action="/articles/<%= article.id %>?_method=DELETE" method="post" class="d-inline">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    <div style="display: flex; justify-content: end">
+                        <a href="articles/<%= article.slug %>" class="btn btn-outline-success" style="margin: 0 1px"> Read </a> <!-- było id -->
+                        <a href="articles/edit/<%= article.id %>" class="btn btn-outline-success" style="margin: 0 1px"> Edit </a>
+                        <form action="/articles/<%= article.id %>?_method=DELETE" method="post" class="d-inline" style="margin: 0 1px">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         <% }) %>
