@@ -1,0 +1,43 @@
+#header {
+    border-bottom: 1px solid darkgrey;
+    margin: 0 auto;
+    width: 90%;
+}
+
+#header_a {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+#footer {
+    background-color: rgba(235,235,235,0.8);
+}
+
+#quote {
+    font-size: 20px; padding-left: 30px
+}
+
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-flex {
+    display: flex;
+    justify-content: center;
+}
+
+.a_img_margin {
+    margin-left: 40px;
+}
+
+.margin01{
+    margin: 0 1px;
+}
