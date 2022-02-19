@@ -5,6 +5,8 @@ const methodOverride = require('method-override')
 const app = express()
 const articleRouter = require('./routes/articles')
 
+app.use(express.static(__dirname + '/public'))
+
 mongoose.connect('mongodb://localhost/blogTEST', {
     useNewUrlParser: true, useUnifiedTopology: true //, useCreateIndex: true
 })    //blog - nazwa DB
