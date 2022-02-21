@@ -13,9 +13,12 @@ router.get('/edit/:id', async (req, res) => {
 })
 
 router.get('/:id', async (req,res) => { //było /:id
-    const article = await Article.findOne({ id: req.params.id })   //było findById
-    if (article == null) res.redirect('/')
-    res.render('articles/show', {article: article, title: ""})
+    try{
+        const article = await Article.findById(req.params.id)
+        res.render('articles/show', {article: article, title: ""})
+    } catch (e) {
+        res.redirect('/')
+    }
 })
 
 router.post('/', async (req,res, next) => {
@@ -44,6 +47,7 @@ function saveArticleAndRedirect(path) { //dla post i put bo sie powtarza kod
             article = await article.save()  //zwraca error przy pustym title lub markdown (są required w bazie)
             res.redirect(`/articles/${article.id}`);    //czemu nie zaskoczyło wcześniej ? XD
         } catch (e) {
+            console.log(e)
             res.render(`articles/${path}`, {article: article, title: ""})  //dla pewności że to poprzedni artykuł (pola będą wypełnione)
         }
     }

@@ -7,7 +7,7 @@ const articleRouter = require('./routes/articles')
 
 app.use(express.static(__dirname + '/public'))
 
-mongoose.connect('mongodb://localhost/blogTEST', {
+mongoose.connect('mongodb://localhost/ideaDB', {
     useNewUrlParser: true, useUnifiedTopology: true //, useCreateIndex: true
 })    //blog - nazwa DB
 
