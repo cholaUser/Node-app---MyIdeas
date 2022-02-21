@@ -42,7 +42,13 @@ function saveArticleAndRedirect(path) { //dla post i put bo sie powtarza kod
             article.description = req.body.description
             article.markdown = req.body.markdown
         try{
-            article = await article.save()
+            if (article.title.replace(/\s+/g, '') === ""){
+                res.render(`/articles/${path}`, {article: new Article()})
+            }
+            if (article.markdown.replace(/\s+/g, '') === ""){
+                res.render(`/articles/${path}`, {article: new Article()})
+            }
+            article = await article.save()  //jest error przy save jeśli jakieś pole jest puste a w bazie jest required
             res.redirect(`/articles/${article.slug}`);    //czemu nie zaskoczyło wcześniej ? XD
         } catch (e) {
             res.render(`/articles/${path}`, {article: article})  //dla pewności że to poprzedni artykuł (pola będą wypełnione)
