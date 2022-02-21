@@ -25,7 +25,7 @@
                     <div class="flex-between">
                         <div>
                             <a href="articles/<%= article.slug %>" class="btn btn-outline-primary margin01">Read</a> <!-- było id -->
-                            <a href="articles/edit/<%= article.id %>" class="btn btn-outline-primary margin01"> Edit </a>
+                            <a href="articles/edit/<%= article.id %>" class="btn btn-outline-secondary margin01"> Edit </a>
                         </div>
                         <form action="/articles/<%= article.id %>?_method=DELETE" method="post" class="d-inline margin01">
                             <button type="submit" class="btn btn-outline-danger">Delete</button>
