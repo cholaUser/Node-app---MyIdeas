@@ -11,7 +11,7 @@
             <h1><%= article.title %></h1>
             <a href="/articles/edit/<%= article.id %>" class="btn btn-outline-dark a_img_margin">
                 <img src="/img/pencil.svg" width="30" height="30" alt="">
-            </a>    <!-- slug???-->
+            </a>
         </div>
         <div class="text-muted mb-2"><% article.createdAt.toLocaleDateString() %></div>
         <div><%- article.sanitizedHtml %></div><!-- było %= -->
