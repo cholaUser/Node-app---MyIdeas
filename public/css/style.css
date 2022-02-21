@@ -10,6 +10,11 @@
     width: fit-content;
 }
 
+#header_search {
+    width: fit-content;
+    height: fit-content;
+}
+
 #footer {
     background-color: rgba(235,235,235,0.8);
 }
@@ -40,4 +45,11 @@
 
 .margin01{
     margin: 0 1px;
+}
+
+
+@media all and (max-width:1000px) {
+    .hide {
+        display: none;
+    }
 }

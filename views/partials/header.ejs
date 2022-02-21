@@ -1,9 +1,15 @@
 <nav class="navbar navbar-light mb-4">
     <div id="header">
-        <a class="navbar-brand " id="header_a" href="/">
-            <img src="/img/door-open.svg" width="40" height="40" alt="">
-            <span style="font-size: 40px">MyBlog</span>
-            <span class="text-muted" id="quote">"open ur door"</span>
-        </a>
+        <div class="flex-between" style="align-items: center">
+            <a class="navbar-brand " id="header_a" href="/">
+                <img src="/img/door-open.svg" width="40" height="40" alt="">
+                <span style="font-size: 40px">MyBlog</span>
+                <span class="text-muted hide" id="quote">"open ur door"</span>
+            </a>
+            <form action="/" method="POST" class="input-group" id="header_search">
+                <input type="search" value="<%= title %>" name="title" class="form-control rounded" placeholder="Enter a title" aria-label="Search" aria-describedby="search-addon" />
+                <button type="submit" class="btn btn-outline-primary">search</button>
+            </form>
+        </div>
     </div>
 </nav>

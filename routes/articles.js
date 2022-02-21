@@ -4,18 +4,18 @@ const router = express.Router()
 
 
 router.get('/new', (req,res) => {
-    res.render('articles/new', {article: new Article() })
+    res.render('articles/new', {article: new Article(), title: ""})
 })  //ścieżka jest relatywna do tego pliku / to nie jest prawdziwy startowy route
 
 router.get('/edit/:id', async (req, res) => {
     const article = await Article.findById(req.params.id)
-    res.render('articles/edit', { article: article })
+    res.render('articles/edit', { article: article, title: ""})
 })
 
 router.get('/:slug', async (req,res) => { //było /:id
     const article = await Article.findOne({ slug: req.params.slug })   //było findById
     if (article == null) res.redirect('/')
-    res.render('articles/show', {article: article})
+    res.render('articles/show', {article: article, title: ""})
 })
 
 router.post('/', async (req,res, next) => {
@@ -32,6 +32,8 @@ router.delete('/:id', async (req, res) => {
     await Article.findByIdAndDelete(req.params.id)  //usuwa z bazy danych
     res.redirect('/')
 })
+
+
 
 function saveArticleAndRedirect(path) { //dla post i put bo sie powtarza kod
     return async (req, res) => {
