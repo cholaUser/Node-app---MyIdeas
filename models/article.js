@@ -5,7 +5,7 @@ const { JSDOM } = require('jsdom')
 const dompurify = createDomPurify(new JSDOM().window)
 
 
-const articleSchema = new mongoose.Schema({     //Schema??????????????????????????????
+const articleSchema = new mongoose.Schema({
     title: {
         required: true,
         type: String
@@ -18,7 +18,7 @@ const articleSchema = new mongoose.Schema({     //Schema????????????????????????
         type: Date,
         default: Date.now   //bo date przyjmuje funkcje
     },
-    sanitizedHtml: {
+    sanitizedHtml: {    //wyświetlany jest sanitizedHtml a nie markdown/content
         type: String,
         required: true
     }
@@ -32,4 +32,4 @@ articleSchema.pre('validate', function (next) { // funkcja wywoła się za każd
     next() //bardzo ważne!!!
 })
 
-module.exports = mongoose.model('Article', articleSchema)       //?????????????????????? eksportuje klase jak articleSchma ale o nazwie Article?
+module.exports = mongoose.model('Article', articleSchema)       // eksportuje klase  articleSchma ale o nazwie Article?
