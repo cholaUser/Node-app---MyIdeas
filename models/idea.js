@@ -16,20 +16,20 @@ const ideaSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now   //bo date przyjmuje funkcje
+        default: Date.now
     },
-    sanitizedHtml: {    //wyświetlany jest sanitizedHtml a nie content
+    sanitizedHtml: {
         type: String,
         required: true
     }
 })
 
-ideaSchema.pre('validate', function (next) { //save/update
-    if (this.content) {    //marked - konwersja do html, sanitize - usuwa szkodliwy kod
+ideaSchema.pre('validate', function (next) { //wywołane przed save
+    if (this.content) {    //marked - konwersja do html, sanitize - usuwa potencjalnie szkodliwy kod
         this.sanitizedHtml = dompurify.sanitize(marked.parse(this.content))
     }
 
-    next() //bardzo ważne!!!
+    next()
 })
 
-module.exports = mongoose.model('Idea', ideaSchema)       // eksportuje klase  ideaSchma ale o nazwie Idea?
+module.exports = mongoose.model('Idea', ideaSchema)

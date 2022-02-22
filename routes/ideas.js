@@ -5,16 +5,16 @@ const router = express.Router()
 
 router.get('/new', (req,res) => {
     res.render('ideas/new', {idea: new Idea(), title: ""})
-})  //ścieżka jest relatywna do tego pliku / to nie jest prawdziwy startowy route
+})
 
 router.get('/edit/:id', async (req, res) => {
     const idea = await Idea.findById(req.params.id)
     res.render('ideas/edit', { idea: idea, title: ""})
 })
 
-router.get('/:id', async (req,res) => { //było /:id
+router.get('/:id', async (req,res) => {
     try{
-        const idea = await Idea.findById(req.params.id) //param odnosi się do id z path?
+        const idea = await Idea.findById(req.params.id)
         res.render('ideas/show', {idea: idea, title: ""})
     } catch (e) {
         res.redirect('/')
@@ -22,32 +22,32 @@ router.get('/:id', async (req,res) => { //było /:id
 })
 
 router.post('/', async (req,res, next) => {
-    req.idea = new Idea()   //req.idea dostaje id
-    next()  //idź do saveIdea
+    req.idea = new Idea()
+    next()
 }, saveIdeaAndRedirect('new'))
 
 router.put('/:id', async (req,res, next) => {
     req.idea = await Idea.findById(req.params.id)
-    next()  //idź do saveIdea
+    next()
 }, saveIdeaAndRedirect('edit'))
 
 router.delete('/:id', async (req, res) => {
-    await Idea.findByIdAndDelete(req.params.id)  //usuwa z bazy danych
+    await Idea.findByIdAndDelete(req.params.id)
     res.redirect('/')
 })
 
 
-function saveIdeaAndRedirect(path) { //dla post i put bo sie powtarza kod
+function saveIdeaAndRedirect(path) { //powtarzający się kod dla edit i new
     return async (req, res) => {
         let idea = req.idea
         idea.title = req.body.title
         idea.content = req.body.content
         try {
-            idea = await idea.save()  //zwraca error przy pustym title lub content (są required w bazie)
-            res.redirect(`/ideas/${idea.id}`);    //czemu nie zaskoczyło wcześniej ? XD
+            idea = await idea.save()  //zwraca error przy pustym title lub content (są required w BD)
+            res.redirect(`/ideas/${idea.id}`);
         } catch (e) {
-            console.log(e)
-            res.render(`ideas/${path}`, {idea: idea, title: ""})  //dla pewności że to poprzedni artykuł (pola będą wypełnione)
+            //console.log(e)
+            res.render(`ideas/${path}`, {idea: idea, title: ""})
         }
     }
 }
