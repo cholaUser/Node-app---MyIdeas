@@ -8,14 +8,14 @@
 
     <div class="container">
         <div class="mb-1 flex-center">
-            <h1><%= article.title %></h1>
-            <a href="/articles/edit/<%= article.id %>" class="btn btn-outline-dark a_img_margin">
+            <h1><%= idea.title %></h1>
+            <a href="/ideas/edit/<%= idea.id %>" class="btn btn-outline-dark a_img_margin">
                 <img src="/img/pencil.svg" width="30" height="30" alt="">
             </a>
         </div>
-        <div class="text-muted mb-2"><% article.createdAt.toLocaleDateString() %></div>
-        <div><%- article.sanitizedHtml %></div><!-- było %= -->
-        <a href="/" class="btn btn-secondary">All Articles</a>
+        <div class="text-muted mb-2"><% idea.createdAt.toLocaleDateString() %></div>
+        <div><%- idea.sanitizedHtml %></div><!-- było %= -->
+        <a href="/" class="btn btn-secondary">All Ideas</a>
     </div>
 
     <footer><%- include('.././partials/footer') %></footer>
